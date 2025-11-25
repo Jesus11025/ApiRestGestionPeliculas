@@ -9,17 +9,16 @@ import java.net.URI;
 
 public class GlobalErrorController extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(ActorNotFoundException.class)
-    public ProblemDetail handlecActorNotFound (ActorNotFoundException ex) {
+    @ExceptionHandler(EntidadNotFoundException.class)
+    public ProblemDetail handleElementoNotFound (EntidadNotFoundException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
                 HttpStatus.NOT_FOUND, ex.getMessage()
         );
 
-        problemDetail.setTitle("Actor no encontrado");
+        problemDetail.setTitle("Elemento no encontrado");
         problemDetail.setType(
-                URI.create("http://dam.salesianos-gestion-peliculas.com/actor-not-found")
+                URI.create("http://dam.salesianos-gestion-peliculas.com/elemento-not-found")
         );
-
         return problemDetail;
     }
 
