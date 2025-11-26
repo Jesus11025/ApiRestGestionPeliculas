@@ -11,6 +11,10 @@ public record PeliculaSimpleDTO(
 ) {
 
     public Pelicula toEntity() {
-
+        return Pelicula.builder()
+                .titulo(this.titulo)
+                .genero(this.genero)
+                .fechaEstreno(this.fechaEstreno)
+                .build();
     }
 }

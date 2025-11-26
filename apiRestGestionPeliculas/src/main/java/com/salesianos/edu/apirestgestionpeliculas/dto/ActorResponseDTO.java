@@ -4,19 +4,19 @@ import com.salesianos.edu.apirestgestionpeliculas.model.Actor;
 import com.salesianos.edu.apirestgestionpeliculas.model.Pelicula;
 
 import java.util.List;
+import java.util.Set;
 
 public record ActorResponseDTO(
         Long id,
         String nombre,
-        List<PeliculaSimpleDTO> peliculas
+        Set<PeliculaSimpleDTO> peliculas
 
 ) {
 
-    public Actor toEntity(List<Pelicula> listaPeli) {
+    public Actor toEntity() {
         return Actor.builder()
                 .id(this.id)
                 .nombre(this.nombre)
-                .peliculas(listaPeli)
                 .build();
 
     }

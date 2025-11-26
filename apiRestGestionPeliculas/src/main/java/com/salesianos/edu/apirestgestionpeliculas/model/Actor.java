@@ -10,7 +10,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -25,5 +27,5 @@ public class Actor {
     private String nombre;
 
     @ManyToMany(mappedBy = "actors")
-    private List<Pelicula> peliculas = new ArrayList<>();
+    private Set<Pelicula> peliculas = new HashSet<>();
 }

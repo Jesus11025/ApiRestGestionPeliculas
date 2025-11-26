@@ -1,5 +1,6 @@
 package com.salesianos.edu.apirestgestionpeliculas.service;
 
+import com.salesianos.edu.apirestgestionpeliculas.dto.ActorResponseDTO;
 import com.salesianos.edu.apirestgestionpeliculas.error.ActorNotFoundException;
 import com.salesianos.edu.apirestgestionpeliculas.model.Actor;
 import com.salesianos.edu.apirestgestionpeliculas.repository.ActorRepository;
@@ -23,8 +24,13 @@ public class ActorService {
         return resultActor;
     }
 
-    public Actor saveActor() {
-
+    public Actor saveActor(ActorResponseDTO cmd, Actor actor) {
+        return actorRepository.save(
+                Actor.builder()
+                        .id(cmd.id())
+                        .nombre(cmd.nombre())
+                        .build()
+        );
     }
 
 }
