@@ -9,7 +9,7 @@ public record ActorSimpleDTO(
     public static ActorSimpleDTO fromEntity(Actor actor) {
         return new ActorSimpleDTO(
                 actor.getId(),
-                actor. getNombre()
+                actor.getNombre()
         );
     }
 }

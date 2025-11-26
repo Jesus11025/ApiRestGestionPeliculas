@@ -1,5 +1,6 @@
 package com.salesianos.edu.apirestgestionpeliculas.service;
 
+import com.salesianos.edu.apirestgestionpeliculas.dto.ActorRequestDTO;
 import com.salesianos.edu.apirestgestionpeliculas.dto.ActorResponseDTO;
 import com.salesianos.edu.apirestgestionpeliculas.error.ActorNotFoundException;
 import com.salesianos.edu.apirestgestionpeliculas.model.Actor;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -15,22 +17,19 @@ public class ActorService {
 
     private final ActorRepository actorRepository;
 
-    public List<Actor> getAll() {
+    public List<ActorResponseDTO> findAll() {
         List<Actor> resultActor = actorRepository.findAll();
 
         if (resultActor.isEmpty()) {
             throw new ActorNotFoundException();
         }
-        return resultActor;
+        return resultActor.stream()
+                .map(ActorResponseDTO::fromEntity)
+                .collect(Collectors.toList());
     }
 
-    public Actor saveActor(ActorResponseDTO cmd, Actor actor) {
-        return actorRepository.save(
-                Actor.builder()
-                        .id(cmd.id())
-                        .nombre(cmd.nombre())
-                        .build()
-        );
+    public ActorResponseDTO saveActor(ActorRequestDTO cmd) {
+        return ActorResponseDTO.fromEntity(actorRepository.save(cmd.toEntity()));
     }
 
 }

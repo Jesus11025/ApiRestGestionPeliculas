@@ -5,4 +5,6 @@ import com.salesianos.edu.apirestgestionpeliculas.model.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PeliculaRepository extends JpaRepository<Pelicula, Long> {
+
+    boolean existByTitulo(String titulo);
 }
