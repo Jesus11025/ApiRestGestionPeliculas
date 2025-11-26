@@ -1,24 +1,21 @@
 package com.salesianos.edu.apirestgestionpeliculas.dto;
 
-import com.salesianos.edu.apirestgestionpeliculas.model.Actor;
-import com.salesianos.edu.apirestgestionpeliculas.model.Pelicula;
-
-import java.util.List;
+import com.salesianos.edu. apirestgestionpeliculas.model.Actor;
 import java.util.Set;
+import java.util.stream. Collectors;
 
 public record ActorResponseDTO(
         Long id,
         String nombre,
         Set<PeliculaSimpleDTO> peliculas
-
 ) {
-
-    public Actor toEntity() {
-        return Actor.builder()
-                .id(this.id)
-                .nombre(this.nombre)
-                .build();
-
+    public static ActorResponseDTO fromEntity(Actor actor) {
+        return new ActorResponseDTO(
+                actor.getId(),
+                actor.getNombre(),
+                actor.getPeliculas().stream()
+                        .map(PeliculaSimpleDTO::fromEntity)
+                        .collect(Collectors.toSet())
+        );
     }
-
 }
