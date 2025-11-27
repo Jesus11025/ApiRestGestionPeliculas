@@ -47,19 +47,17 @@ public class PeliculaService {
         return PeliculaResponseDTO.fromEntity(saved);
     }
 
-    public List<PeliculaResponseDTO> findAll() {
+    public List<Pelicula> findAll() {
         List<Pelicula> result = peliculaRepository.findAll();
 
         if(result.isEmpty()) {
             throw new PeliculaNotFoundException();
         }
 
-        return result.stream()
-                .map(PeliculaResponseDTO::fromEntity)
-                .collect(Collectors.toList());
+        return result;
     }
 
-    public PeliculaResponseDTO findByIDd(Long id) {
+    public PeliculaResponseDTO findByID(Long id) {
         Pelicula pelicula = peliculaRepository.findById(id)
                 .orElseThrow(() -> new PeliculaNotFoundException(id));
 
@@ -98,6 +96,7 @@ public class PeliculaService {
     public void delete (Long id) {
         Pelicula pelicula = peliculaRepository.findById(id)
                 .orElseThrow(() -> new PeliculaNotFoundException(id));
+        peliculaRepository.delete(pelicula);
     }
 
     public PeliculaResponseDTO asignarActor(Long peliculaId, Long actorId) {

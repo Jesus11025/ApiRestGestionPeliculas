@@ -1,13 +1,11 @@
 package com.salesianos.edu.apirestgestionpeliculas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.repository.cdi.Eager;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -26,6 +24,6 @@ public class Actor {
     private Long id;
     private String nombre;
 
-    @ManyToMany(mappedBy = "actors")
+    @ManyToMany(mappedBy = "actors", fetch = FetchType.EAGER)
     private Set<Pelicula> peliculas = new HashSet<>();
 }

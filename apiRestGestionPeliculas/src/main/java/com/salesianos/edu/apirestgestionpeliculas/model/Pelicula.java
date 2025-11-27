@@ -31,7 +31,7 @@ public class Pelicula {
     @JoinColumn(name = "director_id")
     private Director director;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "peliculas_actores",
             joinColumns = @JoinColumn(name = "pelicula_id"),

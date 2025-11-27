@@ -41,9 +41,12 @@ public class DirectorService {
         return DirectorResponseDTO.fromEntity(director);
     }
 
-    public DirectorResponseDTO update(Long id, DirectorResponseDTO dto) {
+    public DirectorResponseDTO update(Long id, DirectorRequestDTO dto) {
         Director director = directorRepository.findById(id)
                 .orElseThrow(() -> new DirectorNotFoundException(id));
+
+        director.setNombre(dto.nombre());
+        director.setAnioNacimiento(dto.anioNacimiento());
 
         Director updated = directorRepository.save(director);
         return DirectorResponseDTO.fromEntity(updated);
