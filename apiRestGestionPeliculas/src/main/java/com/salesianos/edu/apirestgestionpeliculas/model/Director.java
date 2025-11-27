@@ -28,5 +28,6 @@ public class Director {
     private Integer anioNacimiento;
 
     @OneToMany(mappedBy = "director")
+    @Builder.Default
     private Set<Pelicula> peliculas = new HashSet<>();
 }

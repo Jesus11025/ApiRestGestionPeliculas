@@ -3,7 +3,6 @@ package com.salesianos.edu.apirestgestionpeliculas.dto;
 import com.salesianos.edu.apirestgestionpeliculas.model.Director;
 
 public record DirectorRequestDTO(
-
         String nombre,
         Integer anioNacimiento
 ) {

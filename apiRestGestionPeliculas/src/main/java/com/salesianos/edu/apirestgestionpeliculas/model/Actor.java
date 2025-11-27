@@ -25,5 +25,6 @@ public class Actor {
     private String nombre;
 
     @ManyToMany(mappedBy = "actors", fetch = FetchType.EAGER)
+    @Builder.Default
     private Set<Pelicula> peliculas = new HashSet<>();
 }

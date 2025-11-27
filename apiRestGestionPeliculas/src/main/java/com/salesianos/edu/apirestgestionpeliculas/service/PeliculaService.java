@@ -26,7 +26,7 @@ public class PeliculaService {
 
     public PeliculaResponseDTO save(PeliculaRequestDTO cmd) {
         int mayoriaEdad = 18;
-        if(peliculaRepository.existByTitulo(cmd.titulo())) {
+        if(peliculaRepository.existsByTitulo(cmd.titulo())) {
             throw new PeliculaYaExisteException(cmd.titulo());
         }
 
@@ -70,7 +70,7 @@ public class PeliculaService {
         Pelicula pelicula = peliculaRepository.findById(id)
                 .orElseThrow(() -> new PeliculaNotFoundException(id));
 
-        if(!pelicula.getTitulo().equals(cmd.titulo()) && peliculaRepository.existByTitulo(cmd.titulo())) {
+        if(!pelicula.getTitulo().equals(cmd.titulo()) && peliculaRepository.existsByTitulo(cmd.titulo())) {
             throw new PeliculaYaExisteException(cmd.titulo());
         }
 

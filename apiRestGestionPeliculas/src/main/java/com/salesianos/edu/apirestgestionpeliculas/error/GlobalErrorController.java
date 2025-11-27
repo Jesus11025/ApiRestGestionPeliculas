@@ -32,7 +32,7 @@ public class GlobalErrorController extends ResponseEntityExceptionHandler {
 
         problemDetail.setTitle("La película ya existe");
         problemDetail.setType(
-                URI.create("https://dam.salesianos-gestion-peliculas.com/errors/pelicula-ya-existe")
+                URI.create("https://dam.salesianos-gestion-peliculas.com/error/pelicula-ya-existe")
         );
         return problemDetail;
     }
@@ -45,7 +45,7 @@ public class GlobalErrorController extends ResponseEntityExceptionHandler {
 
         problemDetail.setTitle("El actor ya está asignado");
         problemDetail.setType(
-                URI.create("https://dam.salesianos-gestion-peliculas.com/errors/actor-ya-en-reparto")
+                URI.create("https://dam.salesianos-gestion-peliculas.com/error/actor-ya-en-reparto")
         );
         return problemDetail;
     }
@@ -58,8 +58,19 @@ public class GlobalErrorController extends ResponseEntityExceptionHandler {
 
         problemDetail.setTitle("Director  menor de edad");
         problemDetail.setType(
-                URI.create("https://dam.salesianos-gestion-peliculas.com/errors/director-menor-edad")
+                URI.create("https://dam.salesianos-gestion-peliculas.com/error/director-menor-edad")
         );
+        return problemDetail;
+    }
+
+    @ExceptionHandler(DirectorConPeliculaException.class)
+    public ProblemDetail handleDirectorConPeliculasException(DirectorConPeliculaException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus. CONFLICT,
+                ex.getMessage()
+        );
+        problemDetail.setTitle("Director con películas asignadas");
+        problemDetail.setType(URI.create("https://dam.salesianos-gestion-peliculas.com/error/director-con-peliculas"));
         return problemDetail;
     }
 

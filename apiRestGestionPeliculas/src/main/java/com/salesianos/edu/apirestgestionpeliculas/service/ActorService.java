@@ -17,15 +17,13 @@ public class ActorService {
 
     private final ActorRepository actorRepository;
 
-    public List<ActorResponseDTO> findAll() {
+    public List<Actor> findAll() {
         List<Actor> resultActor = actorRepository.findAll();
 
         if (resultActor.isEmpty()) {
             throw new ActorNotFoundException();
         }
-        return resultActor.stream()
-                .map(ActorResponseDTO::fromEntity)
-                .collect(Collectors.toList());
+        return resultActor;
     }
 
     public ActorResponseDTO saveActor(ActorRequestDTO cmd) {

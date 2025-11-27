@@ -6,5 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PeliculaRepository extends JpaRepository<Pelicula, Long> {
 
-    boolean existByTitulo(String titulo);
+    boolean existsByTitulo(String titulo);
+
+    long countByDirectorId(Long directorId);
+
 }
