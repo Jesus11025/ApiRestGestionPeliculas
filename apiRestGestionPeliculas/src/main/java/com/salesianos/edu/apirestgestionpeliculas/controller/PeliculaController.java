@@ -2,6 +2,8 @@ package com.salesianos.edu.apirestgestionpeliculas.controller;
 
 import com.salesianos.edu.apirestgestionpeliculas.dto.PeliculaRequestDTO;
 import com.salesianos.edu.apirestgestionpeliculas.dto.PeliculaResponseDTO;
+import com.salesianos.edu.apirestgestionpeliculas.model.Pelicula;
+import com.salesianos.edu.apirestgestionpeliculas.repository.PeliculaRepository;
 import com.salesianos.edu.apirestgestionpeliculas.service.PeliculaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -26,6 +28,7 @@ import java.util.List;
 public class PeliculaController {
 
     private final PeliculaService peliculaService;
+    private final PeliculaRepository peliculaRepository;
 
 
     @GetMapping
@@ -83,7 +86,6 @@ public class PeliculaController {
                 .stream()
                 .map(PeliculaResponseDTO::fromEntity)
                 .toList();
-
     }
 
     @GetMapping("/{id}")
@@ -335,6 +337,9 @@ public class PeliculaController {
             )
     })
     public ResponseEntity<?> delete(@PathVariable Long id) {
+//        System.out.println(id);
+//        Pelicula p = peliculaRepository.findById(id).get();
+//        System.out.println(p);
         peliculaService.delete(id);
         return ResponseEntity.noContent().build();
     }

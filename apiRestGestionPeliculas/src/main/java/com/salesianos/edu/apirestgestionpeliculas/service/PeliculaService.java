@@ -93,10 +93,12 @@ public class PeliculaService {
         return PeliculaResponseDTO.fromEntity(updated);
     }
 
-    public void delete (Long id) {
-        Pelicula pelicula = peliculaRepository.findById(id)
-                .orElseThrow(() -> new PeliculaNotFoundException(id));
-        peliculaRepository.delete(pelicula);
+    public void delete(Long id) {
+        if (!peliculaRepository.existsById(id)) {
+            throw new PeliculaNotFoundException(id);
+        }
+
+        peliculaRepository.deleteById(id);
     }
 
     public PeliculaResponseDTO asignarActor(Long peliculaId, Long actorId) {
