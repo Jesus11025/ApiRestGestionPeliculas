@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "83cf35bd-fc0f-47e6-b590-29ae7aec2d55",
+		"name": "API gestion peliculas - Jesús Zamorano",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50074523",
+		"_collection_link": "https://zamorano-rojes24-6497939.postman.co/workspace/Jes%C3%BAs-Zamorano-Rodr%C3%ADguez's-Work~86479263-bacd-46ae-8c57-408eb9016d44/collection/50074523-83cf35bd-fc0f-47e6-b590-29ae7aec2d55?action=share&source=collection_link&creator=50074523"
+	},
+	"item": [
+		{
+			"name": "OK",
+			"item": [
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Actualizar Pelicula",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Harry Potter y la piedra\",\r\n    \"genero\": \"ficcion\",\r\n    \"fechaEstreno\": \"2020-05-10\",\r\n    \"directoId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/pelicula/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"pelicula",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar director",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Luismi\",\r\n    \"anioNacimiento\": 2000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/director/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"director",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Pelicula",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"harrypotter\",\r\n    \"genero\": \"ficcion\",\r\n    \"fechaEstreno\": \"2020-05-10\",\r\n    \"directoId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/pelicula",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"pelicula"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Director",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"rau\",\r\n    \"anioNacimiento\": 1999\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/director",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"director"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"angel\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/actor",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"actor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AniadirActorAPelicula",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/pelicula/1/actores/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"pelicula",
+										"1",
+										"actores",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Eliminar director",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"angel\"\r\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}/director/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"director",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar pelicula",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"angel\"\r\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}/pelicula/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"pelicula",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Obtener actores",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/actor",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"actor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener peliculas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/pelicula",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"pelicula"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Directores",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/director",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"director"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener una pelicula",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/pelicula/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"pelicula",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener un director",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/director/1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"director",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "FAILED",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Obtener pelicula o director con ID no existente",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/director/5",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"director",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Actualizar pelicula o director que no existe",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"PE\",\r\n    \"anioNacimiento\": 2000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/director/5",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"director",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Eliminar una pelicula o director que no existe",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/pelicula/4",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"pelicula",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
