@@ -64,7 +64,7 @@ public class PeliculaService {
         return PeliculaResponseDTO.fromEntity(pelicula);
     }
 
-    public PeliculaResponseDTO update(Long id, PeliculaResponseDTO cmd) {
+    public PeliculaResponseDTO update(Long id, PeliculaRequestDTO cmd) {
         int mayoriaEdad = 18;
 
         Pelicula pelicula = peliculaRepository.findById(id)
@@ -74,8 +74,8 @@ public class PeliculaService {
             throw new PeliculaYaExisteException(cmd.titulo());
         }
 
-        Director director = directorRepository.findById(cmd.director().id())
-                .orElseThrow(() -> new DirectorNotFoundException(cmd.director().id()));
+        Director director = directorRepository.findById(cmd.directoId())
+                .orElseThrow(() -> new DirectorNotFoundException(cmd.directoId()));
 
         int anioEstreno = cmd.fechaEstreno().getYear();
         int edadDirector = LocalDate.now().getYear() - director.getAnioNacimiento();

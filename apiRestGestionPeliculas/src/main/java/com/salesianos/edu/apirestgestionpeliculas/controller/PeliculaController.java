@@ -316,7 +316,7 @@ public class PeliculaController {
                     )
             )
     })
-    public ResponseEntity<PeliculaResponseDTO> update(@PathVariable Long id, @RequestBody PeliculaResponseDTO cmd) {
+    public ResponseEntity<PeliculaResponseDTO> update(@PathVariable Long id, @RequestBody PeliculaRequestDTO cmd) {
         return ResponseEntity.ok(peliculaService.update(id, cmd));
     }
 

@@ -5,23 +5,23 @@ Proyecto de api rest para la gestión de peliculas, directores y actores
 ## Descripción
 
 Este proyecto implementa una API Rest que realiza lo siguiente:
- - Gestiona catalogos de peliculas con cruds
- - Administra directores con cruds
- - Gestiona actores con cruds basicos
- - Asigna actores a peliculas
- - Validaciones varias
- - Gestión de errores
- - Docuemntación con OpenAPI y swagger
+- Gestiona catalogos de peliculas con cruds
+- Administra directores con cruds
+- Gestiona actores con cruds basicos
+- Asigna actores a peliculas
+- Validaciones varias
+- Gestión de errores
+- Docuemntación con OpenAPI y swagger
 
 ## Tecnologias utilizadas
 
- - Java 17
- - Spring Boot
- - Spring Data JPA
- - H2 Database
- - Lombok
- - OpenAPI
- - Maven
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- H2 Database
+- Lombok
+- OpenAPI
+- Maven
 
 ### Pasos para ejecutar
 
@@ -35,7 +35,7 @@ Se puede acceder a la documentación de Swagger en la siguiente url: http://loca
 
 Se puede acceder a OpenApi con la siguiente url: http://localhost:8080/api-docs
 
-## Endpoints 
+## Endpoints
 
 ### Peliculas
 | Método | Endpoint | Descripción | Códigos |
@@ -64,7 +64,7 @@ Se puede acceder a OpenApi con la siguiente url: http://localhost:8080/api-docs
 
 ## Gestión de Errores
 
-La API implementa manejo global de excepciones siguiendo el estándar **RFC 7807 (ProblemDetail)**:
+La API implementa manejo global de excepciones siguiendo el estándar:
 
 | Código | Excepción | Descripción |
 |--------|-----------|-------------|
@@ -73,11 +73,10 @@ La API implementa manejo global de excepciones siguiendo el estándar **RFC 7807
 | **409** | `ActorYaEnRepartoException` | El actor ya está asignado a esa película |
 | **400** | `DirectorMenorEdadException` | El director tenía menos de 18 años al dirigir la película |
 
-## 🗂️ Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 src/main/java/com/salesianos/edu/apirestgestionpeliculas/
-├── config/              # Configuración (OpenAPI, datos iniciales)
 ├── controller/          # Controladores REST
 ├── dto/                 # DTOs (Request, Response, Simple)
 ├── error/               # Excepciones personalizadas y manejador global
@@ -86,7 +85,7 @@ src/main/java/com/salesianos/edu/apirestgestionpeliculas/
 └── service/             # Lógica de negocio
 ```
 
-## 📝 Licencia
+## Licencia
 
 Proyecto realizado por Jesús Zamorano Rodríguez estudiante de **Desarrollo de Aplicaciones Multiplataforma** en **Salesianos Triana**.
 

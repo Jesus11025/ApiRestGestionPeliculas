@@ -241,8 +241,8 @@ public class DirectorController {
                                     """)
                     )
             )
-            @RequestBody DirectorRequestDTO dto) {
-        return ResponseEntity.ok(directorService.update(id, dto));
+            @RequestBody DirectorRequestDTO cmd) {
+        return ResponseEntity.ok(directorService.update(id, cmd));
     }
 
     @DeleteMapping("/{id}")
