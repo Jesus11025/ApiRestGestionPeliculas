@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -246,7 +247,7 @@ public class PeliculaController {
                                     """)
                     )
             )
-            @RequestBody PeliculaRequestDTO cmd)
+            @Valid @RequestBody PeliculaRequestDTO cmd)
     {
         PeliculaResponseDTO created = peliculaService.save(cmd);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);

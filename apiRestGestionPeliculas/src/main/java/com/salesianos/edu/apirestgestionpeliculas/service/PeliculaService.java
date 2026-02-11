@@ -9,6 +9,7 @@ import com.salesianos.edu.apirestgestionpeliculas.model.Pelicula;
 import com.salesianos.edu.apirestgestionpeliculas.repository.ActorRepository;
 import com.salesianos.edu.apirestgestionpeliculas.repository.DirectorRepository;
 import com.salesianos.edu.apirestgestionpeliculas.repository.PeliculaRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class PeliculaService {
     private final DirectorRepository directorRepository;
     private final ActorRepository actorRepository;
 
-    public PeliculaResponseDTO save(PeliculaRequestDTO cmd) {
+    public PeliculaResponseDTO save(@Valid PeliculaRequestDTO cmd) {
         int mayoriaEdad = 18;
         if(peliculaRepository.existsByTitulo(cmd.titulo())) {
             throw new PeliculaYaExisteException(cmd.titulo());
